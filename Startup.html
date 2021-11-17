@@ -42,11 +42,50 @@
 
 
   <script type="text/babel">
-    ReactDOM.render(
-      <App />,
-      document.getElementById('content')
-    );
 
+
+    async function getData() {
+
+      var allData = {}
+
+      let pClimateCodes = new Promise(async (resolve, reject) => {
+        const response = await fetch("php/Climatecodes.php", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        })
+          .then((response) => response.json()).then(data => {
+            allData["climateCode"] = data
+            resolve(data)
+          });
+      })
+
+      Promise.all([pClimateCodes])
+        .then((data) => {
+          console.log(data)
+          ReactDOM.render(
+            <App codes={"asd"} />,
+            document.getElementById('content')
+          );
+        })
+    }
+
+    async function getClimateCodeData() {
+      const response = await fetch("php/Climatecodes.php", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then((response) => response.json()).then(data => {
+          return data;
+        });
+    }
+
+    getData();
+
+    // React since react V4 does not read query parameters so we read query parameter directly
+    const urlParams = new URLSearchParams(window.location.search);
+    const ort = urlParams.get('ort');
+
+    if (ort != null) alert(ort);
   </script>
 
 </body>
