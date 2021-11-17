@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>React Example</title>
+  <link rel="stylesheet" href="css/weatherApp.css">
+  <link rel="stylesheet" href="css/App.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/ChatMessage.css">
+  <link rel="stylesheet" href="css/ChatWindow.css">
+  <link rel="stylesheet" href="css/WeatherDay.css">
+  <link rel="stylesheet" href="css/WeatherTable.css">
+</head>
+
+<body>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+
+  <h1 className="title">Weather app</h1>
+  <form action="Startup.html" method="get">
+    <div class="form-group search">
+      <input type="text" class="input" placeholder="search" name="ort">
+      <button type="submit"><img src='magnify.svg'></button>
+    </div>
+  </form>
+
+  <div id="content"></div>
+
+  <script type="text/babel" src='App.js'></script>
+
+  <!-- Weather Table -->
+  <script type="text/babel" src='WeatherTable.js'></script>
+  <script type="text/babel" src="WeatherTableBody.js"></script>
+  <script type="text/babel" src="WeatherDay.js"></script>
+
+  <!-- Chat Window -->
+  <script type="text/babel" src='ChatWindow.js'></script>
+  <script type="text/babel" src='ChatMessages.js'></script>
+  <script type="text/babel" src='ChatMessage.js'></script>
+
+
+  <script type="text/babel">
+    ReactDOM.render(
+      <App />,
+      document.getElementById('content')
+    );
+
+  </script>
+
+</body>
+
+</html>
