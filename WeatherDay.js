@@ -1,4 +1,5 @@
-function WeatherDay({ data }) {
+function WeatherDay({ data, forecast }) {
+    console.log(forecast)
     return (
         <tr className="weather-day-container">
             <td className="weather-type">

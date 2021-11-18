@@ -1,5 +1,6 @@
-function WeatherTable({ data }) {
-
+function WeatherTable({ ort, climateCode, forecast }) {
+    /*     console.log(ort)
+        console.log(climateCode) */
     const weatherData = getWeatherData()
 
     function getWeatherData() {
@@ -12,17 +13,26 @@ function WeatherTable({ data }) {
         return [day1, day2, day3, day4, day5]
     }
 
+    function getForecastData() {
+        var data = []
+        for (var e of forecast) {
+            data.push(e)
+        }
+
+        return data
+    }
+
     return (
         <div className="weather-table">
             <div className="header-wrapper">
-                <h1>{data.info.cityName}</h1>
-                <span>Country: {data.info.country}, </span>
-                <span>Geodata: {data.info.geodata}, </span>
-                <span>Zip code: {data.info.zipCode}</span>
-                <div>Description: {data.info.description}</div>
+                <h1>{ort.name}</h1>
+                <span>Country: {ort.country}, </span>
+                <span>Geodata: {"temp, ort.geodata"}, </span>
+                <span>Postal code: {ort.postalcode}</span>
+                <div>Description: {ort.about}</div>
                 <div className="climate-code-container">
-                    <div className="climate-code-color" style={{ backgroundColor: data.climateCode.color }}></div>
-                    {data.climateCode.code} - {data.climateCode.name}
+                    <div className="climate-code-color" style={{ backgroundColor: climateCode.color }}></div>
+                    {climateCode.code} - {climateCode.name}
                 </div>
             </div>
             <div className="weather-days-container">
@@ -38,7 +48,7 @@ function WeatherTable({ data }) {
                         </tr>
                     </thead>
                     <tbody>
-                        <WeatherTableBody data={weatherData}></WeatherTableBody>
+                        <WeatherTableBody data={weatherData} forecast={forecast}></WeatherTableBody>
                     </tbody>
                 </table>
             </div>

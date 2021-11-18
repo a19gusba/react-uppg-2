@@ -47,36 +47,53 @@
     async function getData() {
 
       var allData = {}
+      const params = {
+        ort: "Arjeplog"
+      }
 
+      // Promise, climate code data
       let pClimateCodes = new Promise(async (resolve, reject) => {
         const response = await fetch("php/Climatecodes.php", {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' }
         })
           .then((response) => response.json()).then(data => {
-            allData["climateCode"] = data
             resolve(data)
           });
       })
 
-      Promise.all([pClimateCodes])
+      // Promise, ort
+      let pOrt = new Promise(async (resolve, reject) => {
+        const response = await fetch("php/Ort.php", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(params)
+        })
+          .then((response) => response.json()).then(data => {
+            resolve(data)
+          });
+      })
+
+
+      // Promise, forecast
+      let pForecast = new Promise(async (resolve, reject) => {
+        const response = await fetch("php/Forecast.php", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(params)
+        })
+          .then((response) => response.json()).then(data => {
+            resolve(data)
+          });
+      })
+
+      Promise.all([pClimateCodes, pOrt, pForecast])
         .then((data) => {
-          console.log(data)
           ReactDOM.render(
-            <App codes={"asd"} />,
+            <App climateCode={data[0]} ort={data[1]} forecast={data[2]} />,
             document.getElementById('content')
           );
         })
-    }
-
-    async function getClimateCodeData() {
-      const response = await fetch("php/Climatecodes.php", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
-      })
-        .then((response) => response.json()).then(data => {
-          return data;
-        });
     }
 
     getData();
