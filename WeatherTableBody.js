@@ -4,9 +4,9 @@
 function WeatherTableBody({ data, forecast }) {
     var i = 0
     return (
-        data.map(data => {
+        forecast.map(data => {
             i++
-            return <WeatherDay key={1/* uuidv4() */} data={data} forecast={forecast[i - 1]}></WeatherDay>
+            return <WeatherDay key={1/* uuidv4() */} data={data}></WeatherDay>
         })
     )
 }

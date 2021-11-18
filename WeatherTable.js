@@ -40,7 +40,7 @@ function WeatherTable({ ort, climateCode, forecast }) {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Temperature<br></br> max / min</th>
+                            <th>Temperature</th>
                             <th>Rain</th>
                             <th>Wind</th>
                             <th>Sun times<br></br> up / down</th>
