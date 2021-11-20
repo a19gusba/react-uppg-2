@@ -9,7 +9,7 @@ function WeatherTable({ ort, climateCode, forecast }) {
                 <span>Postal code: {ort.postalcode}</span>
                 <div>
                     <div className="bold">Geodata: {"temp, ort.geodata"}, </div>
-                    <span></span>
+                    <span>LATITUDE: {ort.geodata.LATITUDE}, LONGITUDE: {ort.geodata.LONGITUDE}, ALTITUDE: {ort.geodata.ALTITUDE}</span>
                 </div>
                 <div>
                     <span className="bold">Description: </span>
