@@ -1,7 +1,7 @@
 
 //import { v4 as uuidv4 } from 'uuid';
 
-function WeatherTableBody({ data, forecast }) {
+function WeatherTableBody({ forecast }) {
     var i = 0
     return (
         forecast.map(data => {

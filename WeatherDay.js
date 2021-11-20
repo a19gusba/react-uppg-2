@@ -1,5 +1,5 @@
 function WeatherDay({ data }) {
-    console.log(data)
+    /* console.log(data) */
 
 
     function getForecastImage(FNAME) {
@@ -39,7 +39,7 @@ function WeatherDay({ data }) {
             <td className="weather-wind">
                 <div className="flex">
                     <img src="" alt="" className="wind-icon" />
-                    <div className="bold">{/* data.wind */} m/s</div>
+                    <div className="bold">{data.forecast.MPS} m/s</div>
                 </div>
             </td>
             <td className="weather-sun">

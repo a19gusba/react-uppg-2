@@ -3,8 +3,10 @@ class ChatWindow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showClass: props.data.show,
+            showClass: "show",
         }
+        this.comments = props.data
+        console.log(this.comments)
         this.handleClick = this.handleClick.bind(this)
 
         this.update()
@@ -41,7 +43,7 @@ class ChatWindow extends React.Component {
                         <h1>chat</h1>
                     </div>
 
-                    <ChatMessages data={this.getChatMessagesData()}></ChatMessages>
+                    <ChatMessages data={this.comments}></ChatMessages>
                 </div>
             </div>
         )

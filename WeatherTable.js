@@ -1,7 +1,7 @@
 function WeatherTable({ ort, climateCode, forecast }) {
     /*     console.log(ort)
         console.log(climateCode) */
-    const weatherData = getWeatherData()
+    console.log(ort.geodata)
 
     function getWeatherData() {
         var data = { type: null, weatherIcon: null, day: null, date: null, temperature: { max: null, min: null }, rain: null, wind: null, sun: { up: null, down: null }, reliability: null }
@@ -27,9 +27,15 @@ function WeatherTable({ ort, climateCode, forecast }) {
             <div className="header-wrapper">
                 <h1>{ort.name}</h1>
                 <span>Country: {ort.country}, </span>
-                <span>Geodata: {"temp, ort.geodata"}, </span>
                 <span>Postal code: {ort.postalcode}</span>
-                <div>Description: {ort.about}</div>
+                <div>
+                    <span className="bold">Geodata: {"temp, ort.geodata"}, </span>
+                    <span></span>
+                </div>
+                <div>
+                    <span className="bold">Description: </span>
+                    <span>{ort.about}</span>
+                </div>
                 <div className="climate-code-container">
                     <div className="climate-code-color" style={{ backgroundColor: climateCode.color }}></div>
                     {climateCode.code} - {climateCode.name}
@@ -48,7 +54,7 @@ function WeatherTable({ ort, climateCode, forecast }) {
                         </tr>
                     </thead>
                     <tbody>
-                        <WeatherTableBody data={weatherData} forecast={forecast}></WeatherTableBody>
+                        <WeatherTableBody forecast={forecast}></WeatherTableBody>
                     </tbody>
                 </table>
             </div>

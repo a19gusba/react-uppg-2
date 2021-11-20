@@ -87,10 +87,23 @@
           });
       })
 
-      Promise.all([pClimateCodes, pOrt, pForecast])
+
+      // Promise, comments
+      let pComments = new Promise(async (resolve, reject) => {
+        const response = await fetch("php/Comments.php", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(params)
+        })
+          .then((response) => response.json()).then(data => {
+            resolve(data)
+          });
+      })
+
+      Promise.all([pClimateCodes, pOrt, pForecast, pComments])
         .then((data) => {
           ReactDOM.render(
-            <App climateCode={data[0]} ort={data[1]} forecast={data[2]} />,
+            <App climateCode={data[0]} ort={data[1]} forecast={data[2]} comments={data[3]} />,
             document.getElementById('content')
           );
         })
