@@ -6,7 +6,6 @@ class ChatWindow extends React.Component {
             showClass: "show",
         }
         this.comments = props.data
-        console.log(this.comments)
         this.handleClick = this.handleClick.bind(this)
 
         this.update()

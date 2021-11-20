@@ -50,6 +50,10 @@
       const params = {
         ort: "Arjeplog"
       }
+      const params2 = {
+        ort: "Arjeplog",
+        days: 2
+      }
 
       // Promise, climate code data
       let pClimateCodes = new Promise(async (resolve, reject) => {
@@ -80,7 +84,7 @@
         const response = await fetch("php/Forecast.php", {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(params)
+          body: JSON.stringify(params2)
         })
           .then((response) => response.json()).then(data => {
             resolve(data)

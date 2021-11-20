@@ -1,5 +1,5 @@
 .weather-table {
-    width: 50vw;
+    max-width: 1000px;
     height: auto;
     border: 1px solid black;
     background-color: rgb(238, 238, 238);
